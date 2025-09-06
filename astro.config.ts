@@ -4,6 +4,7 @@ import fs from "fs";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import remarkCallout from "@r4ai/remark-callout";
+import rehypeExternalLinks from "rehype-external-links";
 import { defineConfig } from "astro/config";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 
@@ -67,5 +68,11 @@ export default defineConfig({
 	],
 	markdown: {
 		remarkPlugins: [remarkCallout],
+		rehypePlugins: [
+			[rehypeExternalLinks, {
+				target: '_blank',
+				rel: ['nofollow', 'noreferrer', 'noopener']
+			}]
+		],
 	},
 });
