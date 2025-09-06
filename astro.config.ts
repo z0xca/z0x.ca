@@ -14,10 +14,10 @@ import expressiveCode from "astro-expressive-code";
 export default defineConfig({
 	site: "https://z0x.ca",
 	devToolbar: {
-			enabled: false,
+		enabled: false,
 	},
 	vite: {
-			plugins: [tailwindcss()],
+		plugins: [tailwindcss()],
 	},
 	integrations: [
 		expressiveCode({
@@ -42,7 +42,7 @@ export default defineConfig({
 				borderColor: "var(--border)",
 				codeBackground:
 					"color-mix(in oklab, var(--secondary) 25%, transparent)",
-					frames: {
+				frames: {
 					editorActiveTabForeground: "var(--muted-foreground)",
 					editorActiveTabBackground:
 						"color-mix(in oklab, var(--secondary) 25%, transparent)",
@@ -68,6 +68,6 @@ export default defineConfig({
 		mdx(),
 	],
 	markdown: {
-			remarkPlugins: [remarkCallout],
+		remarkPlugins: [remarkCallout],
 	},
 });
