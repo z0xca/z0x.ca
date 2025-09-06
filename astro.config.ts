@@ -39,12 +39,10 @@ export default defineConfig({
 				},
 			},
 			styleOverrides: {
-				codeFontSize: "0.75rem",
 				borderColor: "var(--border)",
-				codeFontFamily: "var(--font-mono)",
 				codeBackground:
 					"color-mix(in oklab, var(--secondary) 25%, transparent)",
-				frames: {
+					frames: {
 					editorActiveTabForeground: "var(--muted-foreground)",
 					editorActiveTabBackground:
 						"color-mix(in oklab, var(--secondary) 25%, transparent)",
@@ -54,8 +52,7 @@ export default defineConfig({
 					editorTabBarBackground: "transparent",
 					editorTabBarBorderBottomColor: "transparent",
 					frameBoxShadowCssValue: "none",
-					terminalBackground:
-						"color-mix(in oklab, var(--secondary) 25%, transparent)",
+					terminalBackground: "var(--card)",
 					terminalTitlebarBackground: "transparent",
 					terminalTitlebarBorderBottomColor: "transparent",
 					terminalTitlebarForeground: "var(--muted-foreground)",
@@ -63,6 +60,7 @@ export default defineConfig({
 				lineNumbers: {
 					foreground: "var(--muted-foreground)",
 				},
+				codeFontFamily: "var(--font-mono)",
 				uiFontFamily: "var(--font-sans)",
 			},
 		}),
