@@ -1,12 +1,5 @@
 @reference "@/styles/global.css";
 
-/* Hide prose backticks */
-.prose *::before,
-.prose *::after {
-	content: none !important;
-}
-
-/* Prose utility configuration */
 @utility prose {
 	--tw-prose-body: var(--foreground);
 	--tw-prose-headings: var(--foreground);
@@ -42,7 +35,11 @@
 	--tw-prose-invert-td-borders: var(--border);
 }
 
-/* Prose styling using @apply */
 .prose {
-	@apply prose-headings:font-semibold prose-h2:text-xl prose-h3:text-base prose-h4:text-sm prose-p:text-muted-foreground prose-strong:text-base prose-strong:font-normal prose-a:font-normal [&_code]:bg-muted [&_code]:rounded [&_code]:p-1 [&_code]:font-normal [&_code]:border [&_code]:border-border;
+	@apply prose-headings:font-semibold prose-h2:text-xl prose-h3:text-base prose-h4:text-sm;
+	@apply prose-p:text-muted-foreground prose-strong:text-base prose-strong:font-normal prose-a:font-normal;
+}
+
+.expressive-code {
+	@apply my-6;
 }

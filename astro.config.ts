@@ -41,21 +41,18 @@ export default defineConfig({
         },
         styleOverrides: {
             borderColor: "var(--border)",
-            codeBackground:
-                "color-mix(in oklab, var(--secondary) 25%, transparent)",
+            codeBackground: "var(--card)",
             frames: {
                 editorActiveTabForeground: "var(--muted-foreground)",
-                editorActiveTabBackground:
-                    "color-mix(in oklab, var(--secondary) 25%, transparent)",
+                editorActiveTabBackground: "var(--card)",
                 editorActiveTabIndicatorBottomColor: "transparent",
-                editorActiveTabIndicatorTopColor: "transparent",
-                editorTabBorderRadius: "0",
-                editorTabBarBackground: "transparent",
+                editorActiveTabIndicatorTopColor: "var(--card)",
+                editorTabBarBackground: "var(--secondary)",
                 editorTabBarBorderBottomColor: "transparent",
                 frameBoxShadowCssValue: "none",
                 terminalBackground: "var(--card)",
-                terminalTitlebarBackground: "transparent",
-                terminalTitlebarBorderBottomColor: "transparent",
+                terminalTitlebarBackground: "var(--secondary)",
+                terminalTitlebarBorderBottomColor: "var(--border)",
                 terminalTitlebarForeground: "var(--muted-foreground)",
             },
             lineNumbers: {
