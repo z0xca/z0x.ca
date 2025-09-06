@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><linearGradient
+       id="linearGradient10"><stop
+         style="stop-color:#f5f5f5;stop-opacity:1;"
+         offset="0"
+         id="stop10" /><stop
+         style="stop-color:#0a0a0a;stop-opacity:1;"
+         offset="1"
+         id="stop11" /></linearGradient><radialGradient
+       xlink:href="#linearGradient10"
+       id="radialGradient15"
+       cx="128.00018"
+       cy="128.00395"
+       fx="128.00018"
+       fy="128.00395"
+       r="73.343147"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.527068,0,0,1.527068,-60.464986,-64.47079)" /></defs><rect
+     style="fill:#0a0a0a;fill-opacity:1;stroke-width:1.96924;stroke-linejoin:round"
+     id="bg"
+     width="256"
+     height="256"
+     x="0"
+     y="0"
+     ry="16" /><path
+     style="display:inline;fill:url(#radialGradient15);stroke-width:1.80751"
+     d="M 24.783073,127.03081 130.74296,20.788757 a 6.0877434,6.0877434 0 0 1 8.62384,0.0031 L 245.21944,127.07649 a 6.1091726,6.1091726 0 0 1 -0.0169,8.63903 L 139.30563,241.21298 a 6.1289394,6.1289394 0 0 1 -8.65298,-8.9e-4 L 24.795246,135.66852 a 6.1073032,6.1073032 0 0 1 -0.01222,-8.63771 z M 131.59962,71.896683 75.717825,127.07577 a 6.0384513,6.0384513 0 0 0 -0.0045,8.58859 l 55.816995,55.24292 a 6.1789015,6.1789015 0 0 0 8.68792,0.004 l 55.8818,-55.17909 a 6.0384495,6.0384495 0 0 0 0.004,-8.5886 L 140.28753,71.90171 a 6.1789011,6.1789011 0 0 0 -8.68791,-0.0045 z"
+     id="blur" /><path
+     style="display:inline;fill:#171717;fill-opacity:1;stroke:none;stroke-width:1.80693;stroke-dasharray:none;stroke-opacity:1"
+     d="M 17.783066,124.03063 123.74295,17.788574 a 6.0877435,6.0877435 0 0 1 8.62384,0.003 L 238.21943,124.07631 a 6.1091727,6.1091727 0 0 1 -0.0169,8.63903 l -105.89689,105.4975 a 6.1289395,6.1289395 0 0 1 -8.65298,-8.9e-4 L 17.795238,132.66834 a 6.1073033,6.1073033 0 0 1 -0.01222,-8.63771 z M 124.5996,68.896502 68.717825,124.07559 a 6.0384514,6.0384514 0 0 0 -0.0045,8.58859 l 55.816985,55.24294 a 6.1789016,6.1789016 0 0 0 8.68792,0.004 l 55.8818,-55.1791 a 6.0384496,6.0384496 0 0 0 0.004,-8.58859 l -55.81651,-55.2419 a 6.1789012,6.1789012 0 0 0 -8.68792,-0.0045 z"
+     id="diamond" /></svg>

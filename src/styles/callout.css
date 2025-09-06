@@ -8,7 +8,7 @@
 
 		& > [data-callout-title] {
 			& {
-				@apply flex flex-row items-start gap-2 p-0 font-bold text-blue-500;
+				@apply flex flex-row items-start gap-2 p-0 text-blue-500;
 			}
 
 			&:not:only-child {

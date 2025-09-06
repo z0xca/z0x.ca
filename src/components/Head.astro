@@ -1,22 +1,37 @@
+---
+import { 
+  SITE_TITLE, 
+  SITE_DESCRIPTION, 
+  RSS_TITLE
+} from '@/lib/consts';
+---
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="generator" content={Astro.generator} />
 
-  <title>z0x</title>
-  <meta name="description" content="Design engineer working at Linear." />
+  <title>{SITE_TITLE}</title>
+  <meta name="description" content={SITE_DESCRIPTION} />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="z0x" />
-  <meta property="og:description" content="Design engineer working at Linear." />
-  <meta property="og:site_name" content="z0x" />
+  <meta property="og:title" content={SITE_TITLE} />
+  <meta property="og:description" content={SITE_DESCRIPTION} />
+  <meta property="og:site_name" content={SITE_TITLE} />
   <meta property="og:locale" content="en-US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="z0x" />
-  <meta name="twitter:description" content="Design engineer working at Linear." />
+  <meta name="twitter:title" content={SITE_TITLE} />
+  <meta name="twitter:description" content={SITE_DESCRIPTION} />
 
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link
+  rel="alternate"
+  type="application/rss+xml"
+  title={RSS_TITLE}
+  href={new URL('rss.xml', Astro.site)}
+  />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
