@@ -1,7 +1,7 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import WritingItem from "@/components/WritingItem.astro";
 import { getCollection } from "astro:content";
+import WritingItem from "@/components/WritingItem.astro";
+import Layout from "@/layouts/Layout.astro";
 
 // Get all writing posts and sort by date (newest first)
 const writing = await getCollection("writing");

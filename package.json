@@ -1,31 +1,31 @@
 {
-  "name": "z0x.ca",
-  "version": "1.0.0",
-  "dependencies": {
-    "@astrojs/mdx": "^4.3.4",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.1",
-    "@expressive-code/plugin-line-numbers": "^0.41.3",
-    "@fontsource-variable/geist": "^5.2.6",
-    "@fontsource-variable/geist-mono": "^5.2.6",
-    "@r4ai/remark-callout": "^0.6.2",
-    "@tailwindcss/typography": "^0.5.16",
-    "@tailwindcss/vite": "^4.1.13",
-    "astro": "^5.13.5",
-    "astro-expressive-code": "^0.41.3",
-    "rehype-external-links": "^3.0.0",
-    "tailwindcss": "^4.1.13"
-  },
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "trustedDependencies": [
-    "@tailwindcss/oxide",
-    "esbuild",
-    "sharp"
-  ],
-  "type": "module"
+	"name": "z0x.ca",
+	"version": "1.0.0",
+	"dependencies": {
+		"@astrojs/mdx": "^4.3.4",
+		"@astrojs/rss": "^4.0.12",
+		"@astrojs/sitemap": "^3.5.1",
+		"@expressive-code/plugin-line-numbers": "^0.41.3",
+		"@fontsource-variable/geist": "^5.2.6",
+		"@fontsource-variable/geist-mono": "^5.2.6",
+		"@r4ai/remark-callout": "^0.6.2",
+		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/vite": "^4.1.13",
+		"astro": "^5.13.5",
+		"astro-expressive-code": "^0.41.3",
+		"rehype-external-links": "^3.0.0",
+		"tailwindcss": "^4.1.13"
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"trustedDependencies": [
+		"@tailwindcss/oxide",
+		"esbuild",
+		"sharp"
+	],
+	"type": "module"
 }
