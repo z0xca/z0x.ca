@@ -1,14 +1,14 @@
 // @ts-check
 
-import mdx from "@astrojs/mdx";
-import sitemap from "@astrojs/sitemap";
-import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
-import remarkCallout from "@r4ai/remark-callout";
-import tailwindcss from "@tailwindcss/vite";
-import { defineConfig } from "astro/config";
-import expressiveCode from "astro-expressive-code";
-import fs from "fs";
-import rehypeExternalLinks from "rehype-external-links";
+import fs from "node:fs"
+import mdx from "@astrojs/mdx"
+import sitemap from "@astrojs/sitemap"
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"
+import remarkCallout from "@r4ai/remark-callout"
+import tailwindcss from "@tailwindcss/vite"
+import { defineConfig } from "astro/config"
+import expressiveCode from "astro-expressive-code"
+import rehypeExternalLinks from "rehype-external-links"
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,9 +23,7 @@ export default defineConfig({
 		expressiveCode({
 			themes: ["github-light", "github-dark"],
 			shiki: {
-				langs: [
-					JSON.parse(fs.readFileSync("caddyfile.tmLanguage.json", "utf-8")),
-				],
+				langs: [JSON.parse(fs.readFileSync("caddyfile.tmLanguage.json", "utf-8"))],
 			},
 			plugins: [pluginLineNumbers()],
 			useDarkModeMediaQuery: true,
@@ -76,4 +74,4 @@ export default defineConfig({
 			],
 		],
 	},
-});
+})

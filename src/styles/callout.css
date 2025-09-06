@@ -125,13 +125,11 @@
 		}
 	}
 
-	[data-callout][data-callout-type="abstract"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="abstract"] > [data-callout-title]:empty::after {
 		content: "Abstract";
 	}
 
-	[data-callout][data-callout-type="summary"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="summary"] > [data-callout-title]:empty::after {
 		content: "Summary";
 	}
 
@@ -166,8 +164,7 @@
 		content: "Hint";
 	}
 
-	[data-callout][data-callout-type="important"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="important"] > [data-callout-title]:empty::after {
 		content: "Important";
 	}
 
@@ -190,13 +187,11 @@
 		}
 	}
 
-	[data-callout][data-callout-type="success"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="success"] > [data-callout-title]:empty::after {
 		content: "Success";
 	}
 
-	[data-callout][data-callout-type="check"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="check"] > [data-callout-title]:empty::after {
 		content: "Check";
 	}
 
@@ -223,8 +218,7 @@
 		}
 	}
 
-	[data-callout][data-callout-type="question"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="question"] > [data-callout-title]:empty::after {
 		content: "Question";
 	}
 
@@ -255,18 +249,15 @@
 		}
 	}
 
-	[data-callout][data-callout-type="warning"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="warning"] > [data-callout-title]:empty::after {
 		content: "Warning";
 	}
 
-	[data-callout][data-callout-type="caution"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="caution"] > [data-callout-title]:empty::after {
 		content: "Caution";
 	}
 
-	[data-callout][data-callout-type="attention"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="attention"] > [data-callout-title]:empty::after {
 		content: "Attention";
 	}
 
@@ -289,8 +280,7 @@
 		}
 	}
 
-	[data-callout][data-callout-type="failure"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="failure"] > [data-callout-title]:empty::after {
 		content: "Failure";
 	}
 
@@ -298,8 +288,7 @@
 		content: "Fail";
 	}
 
-	[data-callout][data-callout-type="missing"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="missing"] > [data-callout-title]:empty::after {
 		content: "Missing";
 	}
 
@@ -321,13 +310,11 @@
 		}
 	}
 
-	[data-callout][data-callout-type="danger"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="danger"] > [data-callout-title]:empty::after {
 		content: "Danger";
 	}
 
-	[data-callout][data-callout-type="error"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="error"] > [data-callout-title]:empty::after {
 		content: "Error";
 	}
 
@@ -369,8 +356,7 @@
 		}
 	}
 
-	[data-callout][data-callout-type="example"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="example"] > [data-callout-title]:empty::after {
 		content: "Example";
 	}
 
@@ -392,8 +378,7 @@
 		}
 	}
 
-	[data-callout][data-callout-type="quote"]
-		> [data-callout-title]:empty::after {
+	[data-callout][data-callout-type="quote"] > [data-callout-title]:empty::after {
 		content: "Quote";
 	}
 
