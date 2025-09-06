@@ -1,5 +1,5 @@
 ---
-title: Protect your home Minecraft Server From DDOS attacks with a VPS
+title: Protect your home Minecraft Server from DDOS attacks with a VPS
 description: Guide to installing and configuring sslh on Alpine Linux
 date: 2025-08-30
 ---
