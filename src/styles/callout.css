@@ -404,16 +404,5 @@
 
 /* Remove prose padding inside callouts */
 .prose [data-callout] p {
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-.prose [data-callout] blockquote {
-	margin: 0 !important;
-	padding: 0 !important;
-}
-
-.prose [data-callout] blockquote p {
-	margin: 0 !important;
-	padding: 0 !important;
+	@apply m-0 p-0;
 }
