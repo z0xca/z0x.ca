@@ -1,7 +1,6 @@
 // @ts-check
 
 import fs from "fs";
-import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 import remarkCallout from "@r4ai/remark-callout";
@@ -64,7 +63,6 @@ export default defineConfig({
 				uiFontFamily: "var(--font-sans)",
 			},
 		}),
-		react(),
 		mdx(),
 	],
 	markdown: {
