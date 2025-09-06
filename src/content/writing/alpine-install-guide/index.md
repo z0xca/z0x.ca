@@ -8,14 +8,10 @@ date: 2025-05-04
 
 The goal of this guide is to set up a minimal installation of **Alpine Linux** with **full disk encryption**. Refer to the [Alpine installation wiki](https://wiki.alpinelinux.org/wiki/Installation) if encountering any issues
 
----
-
 ## Acquire an installation image
 
 1. Go to the downloads page https://www.alpinelinux.org/downloads
 2. Under the **Standard** section, download the `x86_64` version
-
----
 
 ## Prepare an installation medium
 
@@ -37,8 +33,6 @@ doas dd bs=4M if=~/Downloads/alpine*x86_64.iso of=/dev/sdb1 conv=fsync oflag=dir
 
 Use [Rufus](https://rufus.ie/en)
 
----
-
 ## Boot the live environment
 
 > [!info]
@@ -48,8 +42,6 @@ Use [Rufus](https://rufus.ie/en)
 2. Insert the flash drive into the computer on which you are installing Alpine Linux.
 3. Power on your PC and press your *boot menu* key. 
 4. Boot the installation medium.
-
----
 
 ## Enter the live environment 
 
@@ -93,8 +85,6 @@ Enter passphrase for /dev/nvme0n1p2: [your_encryption_passphrase]
 Verify passphrase: [your_encryption_passphrase]
 ```
 
----
-
 ## Reboot
 
 1. You can now reboot and enter into your new installation
@@ -105,8 +95,6 @@ Verify passphrase: [your_encryption_passphrase]
 ```sh
 reboot
 ```
-
----
 
 ## Post install
 

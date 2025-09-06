@@ -16,8 +16,6 @@ The goal of this guide is to set up a docker installation of [**Synapse**](https
 > - `boilerplates/` — stores `compose.yaml` files (service definitions).
 > - `compose/` — stores persistent data and configurations of said services.
 
----
-
 ## DNS Setup
 
 You will need to configure your domain name registrar (I recommend using Porkbun) to direct requests for your domain to your server's IP address.
@@ -27,8 +25,6 @@ Specifically, you'll need to create two **A records** for both your main domain 
 *   `matrix.yourdomain.com` also pointing to your server's external IP address.
 
 Don't forget to configure port forwarding for ports 80 and 443 to route to your server's internal IP
-
----
 
 ## Synapse
 
@@ -79,8 +75,6 @@ Password: your_admin_password
 Confirm password: your_admin_password
 Make admin: yes
 ```
-
----
 
 ## Caddy
 
@@ -144,8 +138,6 @@ matrix.example.com {
 docker compose -f /srv/containers/boilerplates/caddy/compose.yml up -d
 ```
 
----
-
 ## Test the installation
 
 At this point, give the [Matrix Federation Tester](https://federationtester.matrix.org/) a whirl by entering your domain name (for example `example.com`, not `matrix.example.com`). This tool checks if your server is reachable on the expected ports. If you hit any issues, it’s likely to do with the reverse proxy or delegation setup, assuming there’s nothing wrong in the Synapse logs. Make sure to double check that your replaced every mention of `example.com` in the guide with your actual domain name.
@@ -155,8 +147,6 @@ You should also be able to view the following at https://matrix.example.com/_mat
 <div class="w-full">
 ![Synapse is running](assets/SynapseIsRunning.png)
 </div>
-
----
 
 ## Pick a Client and Sign In
 

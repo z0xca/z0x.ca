@@ -8,15 +8,11 @@ date: 2025-01-07
 
 The goal of this guide is to set up a minimal installation of **Artix Linux** with **OpenRC** as an init system and **full disk encryption** on an **UEFI** or **BIOS** system. This guide is meant to be read alongside the [Artix](https://wiki.artixlinux.org/) and [Arch](https://wiki.archlinux.org/title/Installation_guide) wiki respectively. It does not cover implementing [Secure Boot](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot#Implementing_Secure_Boot)
 
----
-
 ## Acquire an installation image
 
 1. Go to the downloads page https://artixlinux.org/download.php
 2. Scroll down to the **Official ISO images** section.
 3. Under the **base** section, download the file starting with `artix-base-openrc` and ending with `.iso`
-
----
 
 ## Prepare an installation medium
 
@@ -38,8 +34,6 @@ doas dd bs=4M if=~/Downloads/artix-base-openrc-*-x86_64.iso of=/dev/sdb1 conv=fs
 
 Use [Rufus](https://rufus.ie/en)
 
----
-
 ## Boot the live environment
 
 > [!info]
@@ -50,15 +44,11 @@ Use [Rufus](https://rufus.ie/en)
 3. Power on your PC and press your *boot menu* key. 
 4. Boot the installation medium.
 
----
-
 ## Enter the live environment 
 
 Login with the default credentials.
 * Username: `root`
 * Password: `artix`
-
----
 
 ## Connect to the internet
 
@@ -97,16 +87,12 @@ quit
 ping artixlinux.org
 ```
 
----
-
 ## Update the system clock
 
 Activate the NTP daemon to synchronize the computer's real-time clock
 ```sh
 rc-service ntpd start
 ```
-
----
 
 ## Partition the disk
 
@@ -163,8 +149,6 @@ lsblk
 > └─nvme0n1p2 259:2    0 465,3G  0 part
 > ```
 
----
-
 ## Encrypt root partition
 
 1. Encrypt your root partition
@@ -182,8 +166,6 @@ Are you sure (Type `yes` in capital letters): YES
 cryptsetup open /dev/nvme0n1p2 root
 ```
 
----
-
 ## Create filesystems
 
 1. Create the boot file system
@@ -195,8 +177,6 @@ mkfs.fat -F32 /dev/nvme0n1p1
 ```sh
 mkfs.ext4 /dev/mapper/root
 ```
-
----
 
 ## Mount file systems
 
@@ -226,8 +206,6 @@ lsblk
 >   └─root    254:0    0 465,2G  0 crypt /mnt
 > ```
 
----
-
 ## Install essentials
 
 Install the base system, kernel, init system and other essential packages.
@@ -255,23 +233,17 @@ Install Intel CPU microcode updates
 basestrap /mnt intel-ucode
 ```
 
----
-
 ## Generate file system table
 
 ```sh
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
 
----
-
 ## Switch to new Installation
 
 ```sh
 artix-chroot /mnt bash
 ```
-
----
 
 ## Network stack
 
@@ -327,8 +299,6 @@ echo 'LANG=en_DK.UTF-8' > /etc/locale.conf
 locale-gen
 ```
 
----
-
 ## Set the timezone
 
 > [!example]
@@ -338,15 +308,11 @@ locale-gen
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 ```
 
----
-
 ## Set hardware clock from system clock
 
 ```sh
 hwclock --systohc
 ```
-
----
 
 ## Hostname
 
@@ -372,8 +338,6 @@ echo 'artix' > /etc/hostname
 127.0.1.1     artix.localdomain     artix
 ```
 
----
-
 ## Initramfs
 
 In the `HOOKS` array, add `encrypt` between `block` and `filesystems`
@@ -388,8 +352,6 @@ Generate initramfs images
 ```sh
 mkinitcpio -P
 ```
----
-
 ## Add a user
 
 1. Set the root password.
@@ -407,8 +369,6 @@ useradd -m artix
 passwd artix
 ```
 
----
-
 ## Configure doas
 
 1. Create the config file and set the appropriate permissions
@@ -424,8 +384,6 @@ chmod -c 0400 /etc/doas.conf
 +permit artix as root
 +permit nopass artix as root cmd pacman
 ```
-
----
 
 ## Boot loader
 ### Check for UEFI support
@@ -488,8 +446,6 @@ GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=xxxx:root root=/dev/mapper/root"
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
----
-
 ## Reboot
 
 1. You can now reboot and enter into your new installation
@@ -502,8 +458,6 @@ exit
 umount -R /mnt
 reboot now
 ```
-
----
 
 ## Post install
 
