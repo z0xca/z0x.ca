@@ -1,0 +1,21 @@
+---
+import "@/styles/global.css";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
+import Head from "@/components/Head.astro";
+import Header from "@/components/Header.astro";
+---
+
+<!doctype html>
+<!-- ✨ Built with Astro • https://astro.build/  -->
+<html lang="en">
+  <head>
+    <Head />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
