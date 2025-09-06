@@ -59,7 +59,7 @@ Log in as the user `root`. Initially, the **root** user has no password.
 setup-alpine
 ```
 
-```md showLineNumbers=false
+```text
 Select keyboard layout: us
 Select variant: us
 Enter system hostname: alpine

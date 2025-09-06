@@ -106,12 +106,12 @@ gdisk /dev/nvme0n1
 > `nvme0n1` will be used as the target install drive throughout this guide, adapt it to your drive name.
 
 2. Delete any existing partitions. Repeat until none are left.
-```txt showLineNumbers=false
+```text
 Command (m for help): d
 ```
 
 3. Create a boot partition
-```txt showLineNumbers=false
+```text
 Command (m for help): n
 Partition number (1-128, default 1):
 First sector (...):
@@ -120,7 +120,7 @@ Hex code or GUID (...): ef00
 ```
 
 4. Create a root partition
-```txt showLineNumbers=false
+```text
 Command (m for help): n
 Partition number (2-128, default 1):
 First sector (...):
@@ -129,7 +129,7 @@ Hex code or GUID (...): 8300
 ```
 
 5. Write the changes
-```txt showLineNumbers=false
+```text
 Command (m for help): w
 Do you want to proceed? (Y/N): y
 ```
