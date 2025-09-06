@@ -4,6 +4,17 @@ import {
   SITE_DESCRIPTION, 
   RSS_TITLE
 } from '@/lib/consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+
+// Use provided title/description or fall back to site defaults
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
+const pageDescription = description || SITE_DESCRIPTION;
 ---
 
 <head>
@@ -11,20 +22,20 @@ import {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="generator" content={Astro.generator} />
 
-  <title>{SITE_TITLE}</title>
-  <meta name="description" content={SITE_DESCRIPTION} />
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content={SITE_TITLE} />
-  <meta property="og:description" content={SITE_DESCRIPTION} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
   <meta property="og:site_name" content={SITE_TITLE} />
   <meta property="og:locale" content="en-US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={SITE_TITLE} />
-  <meta name="twitter:description" content={SITE_DESCRIPTION} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
 
   <link rel="sitemap" href="/sitemap-index.xml" />
   <link
