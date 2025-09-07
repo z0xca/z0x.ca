@@ -26,13 +26,13 @@ const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1]
 
 <Layout title={post.data.title} description={post.data.description}>
   <article>
-    <header class="mb-16 pb-6 border-b border-border">
+    <header class="border-b border-border mb-16 sm:mb-32">
       <h1 class="text-2xl mb-4 leading-tight">{post.data.title}</h1>
-      <p class="text-muted-foreground">{post.data.description}</p>
+      <p class="text-muted-foreground mb-6">{post.data.description}</p>
     </header>
-    <div class="prose">
+    <section class="prose">
       <Content />
-    </div>
+    </section>
   </article>
   <PostNavigation prevPost={prevPost} nextPost={nextPost} />
   <PostFooter />

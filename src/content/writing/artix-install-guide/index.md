@@ -16,6 +16,10 @@ The goal of this guide is to set up a minimal installation of **Artix Linux** wi
 
 ## Prepare an installation medium
 
+### Windows
+
+Use [Rufus](https://rufus.ie/en)
+
 ### Linux
 
 1. Insert a USB flash drive into your PC with at least 2 GB of space available on it.
@@ -29,10 +33,6 @@ The goal of this guide is to set up a minimal installation of **Artix Linux** wi
 ```sh
 doas dd bs=4M if=~/Downloads/artix-base-openrc-*-x86_64.iso of=/dev/sdb1 conv=fsync oflag=direct status=progress
 ```
-
-### Windows
-
-Use [Rufus](https://rufus.ie/en)
 
 ## Boot the live environment
 
@@ -264,14 +264,14 @@ rc-update add iwd
 > [!info]
 >MAC randomization can be used for increased privacy by not disclosing your real MAC address to the WiFi network. 
 
-```diff
+```text
 <!-- /etc/NetworkManager/conf.d/00-macrandomize.conf -->
-+[device-mac-randomization]
-+wifi.scan-rand-mac-address=yes
+[device-mac-randomization]
+wifi.scan-rand-mac-address=yes
 
-+[connection-mac-randomization]
-+ethernet.cloned-mac-address=random
-+wifi.cloned-mac-address=random
+[connection-mac-randomization]
+ethernet.cloned-mac-address=random
+wifi.cloned-mac-address=random
 ```
 
 ## Localization

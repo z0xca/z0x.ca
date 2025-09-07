@@ -24,6 +24,6 @@
 	@apply prose-p:text-muted-foreground prose-strong:text-base prose-strong:font-normal prose-a:font-normal;
 }
 
-.expressive-code {
-	@apply my-6;
+.expressive-code, [data-callout] {
+	@apply mb-6;
 }
