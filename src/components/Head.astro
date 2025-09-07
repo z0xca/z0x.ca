@@ -26,9 +26,8 @@ const pageDescription = description || SITE_DESCRIPTION;
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:site_name" content={SITE_TITLE} />
-  <meta property="og:locale" content="en-US" />
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
 
-  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={pageTitle} />
   <meta name="twitter:description" content={pageDescription} />
 
