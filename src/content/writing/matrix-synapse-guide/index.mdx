@@ -4,6 +4,10 @@ description: Guide to installing the Synapse matrix homeserver
 date: 2025-08-23
 ---
 
+import Replacer from '@/components/Replacer.astro'
+
+<Replacer string="example.com">
+
 ## Introduction
 
 The goal of this guide is to set up a docker installation of [**Synapse**](https://github.com/element-hq/synapse) with [**Delegation**](https://element-hq.github.io/synapse/latest/delegate.html#when-do-i-need-delegation) and **SQLite**
@@ -21,8 +25,8 @@ The goal of this guide is to set up a docker installation of [**Synapse**](https
 You will need to configure your domain name registrar (I recommend using Porkbun) to direct requests for your domain to your server's IP address.
 Specifically, you'll need to create two **A records** for both your main domain and a subdomain:
 
-*   `yourdomain.com` pointing to your server's external IP address.
-*   `matrix.yourdomain.com` also pointing to your server's external IP address.
+*   `example.com` pointing to your server's external IP address.
+*   `matrix.example.com` also pointing to your server's external IP address.
 
 Don't forget to configure port forwarding for ports 80 and 443 to route to your server's internal IP
 
@@ -153,3 +157,5 @@ You should also be able to view the following at https://matrix.example.com/_mat
 Now is the time to choose a client or app to log in with.
 
 I recommend [Element Web or Desktop](https://matrix.org/ecosystem/clients/element) for desktops and [ Element X](https://matrix.org/ecosystem/clients/element-x) for mobile devices.
+
+</Replacer>

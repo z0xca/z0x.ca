@@ -15,7 +15,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { Content } = await post.render()
 
-// Get all posts for navigation, sorted by date (oldest first)
 const allPosts = (await getCollection("writing")).sort(
 	(a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
 )

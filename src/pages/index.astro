@@ -3,7 +3,6 @@ import { getCollection } from "astro:content"
 import WritingItem from "@/components/WritingItem.astro"
 import Layout from "@/layouts/Layout.astro"
 
-// Get all writing posts and sort by date (newest first)
 const writing = await getCollection("writing")
 writing.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
 ---
