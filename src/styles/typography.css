@@ -20,8 +20,9 @@
 }
 
 .prose {
-	@apply prose-headings:font-semibold prose-h2:text-xl prose-h3:text-base prose-h4:text-sm;
-	@apply prose-strong:text-base prose-strong:font-normal prose-a:font-normal;
+	@apply prose-headings:font-semibold;
+	@apply prose-h2:text-xl prose-h3:text-base prose-h4:text-sm prose-h5:text-xs;
+	@apply prose-strong:font-normal;
 }
 
 .expressive-code, [data-callout] {
