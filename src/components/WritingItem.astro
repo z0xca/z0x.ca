@@ -12,6 +12,6 @@ const { title, description, slug } = Astro.props
   class="-mx-3 flex flex-col rounded-md px-3 hover:bg-muted sm:py-3"
   href={`/writing/${slug}`}
 >
-  <span>{title}</span>
-  <span class="text-muted-foreground">{description}</span>
+  <span class="text-foreground">{title}</span>
+  <span>{description}</span>
 </a>

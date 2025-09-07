@@ -13,8 +13,8 @@ const { prevPost, nextPost } = Astro.props
     href={prevPost ? `/writing/${prevPost.slug}` : '#'}
     aria-disabled={!prevPost}
   >
-    <span class="text-muted-foreground">Previous</span>
-    <span class="inline-block min-w-0 max-w-full truncate">
+    <span>Previous</span>
+    <span class="inline-block min-w-0 max-w-full truncate text-foreground">
       {prevPost?.data.title || 'Oldest post!'}
     </span>
   </a>
@@ -24,8 +24,8 @@ const { prevPost, nextPost } = Astro.props
     href={nextPost ? `/writing/${nextPost.slug}` : '#'}
     aria-disabled={!nextPost}
   >
-    <span class="text-muted-foreground">Next</span>
-    <span class="inline-block min-w-0 max-w-full truncate">
+    <span>Next</span>
+    <span class="inline-block min-w-0 max-w-full truncate text-foreground">
       {nextPost?.data.title || 'Latest post!'}
     </span>
   </a>
