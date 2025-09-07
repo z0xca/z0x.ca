@@ -11,14 +11,11 @@ import { Replacer } from '@/components/Replacer.tsx'
 The goal of this guide is to set up a docker installation of [**Synapse**](https://github.com/element-hq/synapse) with [**Delegation**](https://element-hq.github.io/synapse/latest/delegate.html#when-do-i-need-delegation) and **SQLite**.
 
 Throughout this guide `domain.tld` will be used as a placeholder domain for the Matrix server.
-Replace it with your domain here:
+<Replacer string="domain.tld" label="Replace it with your domain here:" placeholder="your-domain.tld" client:load>
 
-<Replacer string="domain.tld" label="Enter your domain:" placeholder="your-domain.tld" client:load>
-
-> [!note]
-> All container-related files will be organized under `/srv/containers`. This directory will contain two subdirectories:
-> - `boilerplates/` — stores `compose.yaml` files (service definitions).
-> - `compose/` — stores persistent data and configurations of said services.
+All container-related files will be organized under `/srv/containers`. This directory will contain two subdirectories:
+- `boilerplates/` — stores `compose.yaml` files (service definitions).
+- `compose/` — stores persistent data and configurations of said services.
 
 ## DNS Setup
 
@@ -145,7 +142,9 @@ docker compose -f /srv/containers/boilerplates/caddy/compose.yml up -d
 
 ## Test the installation
 
-At this point, give the [Matrix Federation Tester](https://federationtester.matrix.org/) a whirl by entering `domain.tld`. This tool checks if your server is reachable on the expected ports. If you hit any issues, it's likely to do with the reverse proxy or delegation setup, assuming there's nothing wrong in the Synapse logs. Make sure to double check that your replaced every mention of `domain.tld` in the guide with your actual domain name and that your ports are actually open.
+At this point, give the [Matrix Federation Tester](https://federationtester.matrix.org/) a whirl by entering `domain.tld`. This tool checks if your server is reachable on the expected ports.
+
+If you hit any issues, it's likely to do with the reverse proxy or delegation setup, assuming there's nothing wrong in the Synapse logs. Make sure to double check that your ports are actually open and accessible.
 
 You should also be able to view the following at https://matrix.domain.tld/_matrix/static
 

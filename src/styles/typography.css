@@ -26,5 +26,5 @@
 }
 
 .expressive-code, [data-callout], .replacer-container {
-	@apply mb-6;
+	@apply mb-8;
 }
