@@ -62,4 +62,4 @@ netstat -tulnp | grep :25565
 
 `sslh` should now be running. Make sure your home router is port forwarding port 25565 traffic to your home server. You might want to give your computer a static IP address so this doesn't change.
 
-To see if people can access your server, type the VPS's IP address into an [online status checker](https://mcsrvstat.us). You can also type your proxy's IP into your Minecraft client and try to join. If it doesn't work, make sure the 25565 port is open in the VPS provider's firewall settings and the VPS's OS.
+To see if people can access your server, type the VPS's IP address into an [online status checker](https://mcsrvstat.us). You can also type the VPS IP into your Minecraft client and try to join. If it doesn't work, make sure the 25565 port is open in the VPS provider's and the VPS's OS firewalls.

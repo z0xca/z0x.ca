@@ -25,6 +25,6 @@
 	@apply prose-strong:font-normal;
 }
 
-.expressive-code, [data-callout] {
+.expressive-code, [data-callout], .replacer-container {
 	@apply mb-6;
 }
