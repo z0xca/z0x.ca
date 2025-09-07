@@ -10,30 +10,32 @@ writing.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).g
 
 <Layout>
   <article class="mb-16 sm:mb-32">
-    <span class="mb-5 block font-medium text-foreground">Today</span>
+    <h2 class="mb-5 block font-medium text-foreground">Today</h2>
     <p class="mb-4">I work as a design engineer at Linear. I like to build things for designers and developers, and think deeply about the user interface, how it looks, feels, behaves.</p>
     <p>Previously, I worked on the design team at Vercel.</p>
   </article>
 
   <section class="mb-16 sm:mb-32">
-    <span class="mb-5 block font-medium text-foreground">Writing</span>
-    <div class="flex flex-col gap-7 sm:gap-4">
+    <h2 class="mb-5 font-medium text-foreground">Writing</h2>
+    <ul class="flex flex-col gap-7 sm:gap-4">
       {writing.map((post) => (
-        <WritingItem
-          title={post.data.title}
-          description={post.data.description}
-          slug={post.slug}
-        />
+        <li>
+          <WritingItem
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.slug}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   </section>
   <section class="mb-12 sm:mb-16">
-    <span class="mb-5 block font-medium text-foreground">More</span>
-    <span class="text-muted-foreground">
+    <h2 class="mb-5 font-medium text-foreground">More</h2>
+    <p class="text-muted-foreground">
       You can contact me on
       <a href="https://matrix.to/#/@z0x:z0x.ca" target="_blank" rel="nofollow noreferrer noopener" class="underline decoration-muted-foreground hover:decoration-foreground hover:text-foreground transition-all duration-150">Matrix</a>
       and find my code on
       <a href="https://git.z0x.ca" target="_blank" rel="nofollow noreferrer noopener" class="underline decoration-muted-foreground hover:decoration-foreground hover:text-foreground transition-all duration-150">Forgejo</a>.
-    </span>
+    </p>
   </section>
 </Layout>
