@@ -124,6 +124,6 @@
 	}
 	body {
 		@apply bg-background text-foreground;
-		@apply flex flex-col subpixel-antialiased min-h-screen max-w-(--breakpoint-md) mx-auto px-6 my-12 sm:my-14 md:my-16;
+		@apply flex flex-col subpixel-antialiased min-h-screen max-w-(--breakpoint-md) mx-auto px-6 mt-12 sm:mt-14 md:mt-16;
 	}
 }
