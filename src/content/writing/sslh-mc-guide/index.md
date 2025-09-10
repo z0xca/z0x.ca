@@ -23,7 +23,7 @@ cp /etc/init.d/sslh /etc/init.d/sslh.bak
 ### Configure the init script
 
 > [!note]
-> Replace `your_ip_address` with your home IP address. If you don't know your IP, use Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
+> Replace `your_ip_address` with your home IP address. If you don't know your IP, use [icanhazip.com](https://icanhazip.com/) or Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
 
 ```
 <!-- /etc/init.d/sslh -->

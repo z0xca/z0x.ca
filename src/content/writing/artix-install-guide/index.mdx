@@ -96,14 +96,16 @@ rc-service ntpd start
 
 ## Partition the disk
 
+import { Replacer } from '@/components/Replacer.tsx';
+
+Throughout this guide `nvme0n1` will be used as the target install drive.
+<Replacer string="nvme0n1" label="Replace it with your drive name here:" placeholder="nvme0n1/sda" enableDiskReplacement={true} id="disk" client:load>
+
 1. Install and run `gdisk`
 ```sh
 pacman -Sy gdisk
 gdisk /dev/nvme0n1
 ```
-
-> [!note]
-> `nvme0n1` will be used as the target install drive throughout this guide, adapt it to your drive name.
 
 2. Delete any existing partitions. Repeat until none are left.
 ```text
@@ -316,16 +318,18 @@ hwclock --systohc
 
 ## Hostname
 
-Set your preferred hostname, in this case I will be using `artix`
+Set your preferred hostname, I will be using `artixmachine` throughout this guide.
+<Replacer string="artixmachine" label="Replace it with your desired hostname:" placeholder="artixmachine" id="hostname" client:load>
+
 ```sh
-echo 'artix' > /etc/hostname
+echo 'artixmachine' > /etc/hostname
 ```
 
 ```diff
 <!-- /etc/conf.d/hostname -->
 # Use fallback hostname if /etc/hostname doesn't exist
 -hostname="localhost"
-+hostname="artix"
++hostname="artixmachine"
 ```
 
 ```ini
@@ -335,7 +339,7 @@ echo 'artix' > /etc/hostname
 
 127.0.0.1     localhost
 ::1           localhost
-127.0.1.1     artix.localdomain     artix
+127.0.1.1     artixmachine.localdomain     artixmachine
 ```
 
 ## Initramfs
@@ -361,12 +365,11 @@ passwd
 
 2. Create a user and set his password.
 
-> [!tip]
->Change `artix` to your desired username
+<Replacer string="artixuser" label="Change `artixuser` to your desired username" placeholder="artixuser" id="user" client:load>
 
 ```sh
-useradd -m artix
-passwd artix
+useradd -m artixuser
+passwd artixuser
 ```
 
 ## Configure doas
@@ -381,8 +384,8 @@ chmod -c 0400 /etc/doas.conf
 2. Add the following
 ```diff
 <!-- /etc/doas.conf -->
-+permit artix as root
-+permit nopass artix as root cmd pacman
++permit artixuser as root
++permit nopass artixuser as root cmd pacman
 ```
 
 ## Boot loader
@@ -405,8 +408,9 @@ blkid -s UUID -o value /dev/nvme0n1p2
 2. Create a boot entry
 
 > [!tip]
->Replace xxxx with the UUID that you just obtained
->Replace `intel-ucode.img` with `amd-ucode.img` if you have an AMD CPU
+> Replace xxxx with the UUID that you just obtained.
+>
+> Replace `intel-ucode.img` with `amd-ucode.img` if you have an AMD CPU.
 
 ```sh
 efibootmgr -c -d /dev/nvme0n1 -p 1 -l /vmlinuz-linux -L "Artix" -u "cryptdevice=UUID=xxxx:root root=/dev/mapper/root rw initrd=\intel-ucode.img initrd=\initramfs-linux.img loglevel=3 quiet"
@@ -462,7 +466,7 @@ reboot now
 ## Post install
 
 You will now be greeted with a similar screen as when you first booted from the flash drive.
-Login using the credentials that you set, if you followed the example your username would be `artix`.
+Login using the credentials that you set, if you followed the example your username would be `artixuser`.
 
 ### Add arch repositories and sort for fastest mirrors
 #### Add arch extra repository
@@ -567,7 +571,7 @@ doas cryptsetup luksOpen /dev/sdb1 hdd1
 doas mkfs.ext4 /dev/mapper/hdd1
 doas mkdir /mnt/hdd1
 doas mount /dev/mapper/hdd1 /mnt/hdd1
-doas chown artix:artix /mnt/hdd1
+doas chown artixuser:artixuser /mnt/hdd1
 doas dd if=/dev/urandom of=/root/keyfile_hdd1 bs=512 count=4
 doas chmod 0400 /root/keyfile_hdd1
 doas cryptsetup luksAddKey /dev/sdb1 /root/keyfile_hdd1
@@ -585,4 +589,8 @@ UUID=$(doas blkid -s UUID -o value /dev/sdb1)
 ```sh
 doas rc-update add dmcrypt boot
 doas reboot
-``` 
+```
+
+</Replacer>
+</Replacer>
+</Replacer>
