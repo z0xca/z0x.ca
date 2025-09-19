@@ -96,10 +96,7 @@ rc-service ntpd start
 
 ## Partition the disk
 
-import { Replacer } from '@/components/Replacer.tsx';
-
 Throughout this guide `nvme0n1` will be used as the target install drive.
-<Replacer string="nvme0n1" label="Replace it with your drive name here:" placeholder="nvme0n1/sda" enableDiskReplacement={true} id="disk" client:load>
 
 1. Install and run `gdisk`
 ```sh
@@ -319,7 +316,6 @@ hwclock --systohc
 ## Hostname
 
 Set your preferred hostname, I will be using `artixmachine` throughout this guide.
-<Replacer string="artixmachine" label="Replace it with your desired hostname:" placeholder="artixmachine" id="hostname" client:load>
 
 ```sh
 echo 'artixmachine' > /etc/hostname
@@ -364,8 +360,6 @@ passwd
 ```
 
 2. Create a user and set his password.
-
-<Replacer string="artixuser" label="Change `artixuser` to your desired username" placeholder="artixuser" id="user" client:load>
 
 ```sh
 useradd -m artixuser
@@ -590,7 +584,3 @@ UUID=$(doas blkid -s UUID -o value /dev/sdb1)
 doas rc-update add dmcrypt boot
 doas reboot
 ```
-
-</Replacer>
-</Replacer>
-</Replacer>

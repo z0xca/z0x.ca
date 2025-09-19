@@ -10,7 +10,6 @@ import { defineConfig } from "astro/config"
 import expressiveCode from "astro-expressive-code"
 import rehypeExternalLinks from "rehype-external-links"
 
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -59,7 +58,7 @@ export default defineConfig({
             codeFontFamily: "var(--font-mono)",
             uiFontFamily: "var(--font-sans)",
         },
-		}), mdx(), sitemap(), react()],
+		}), mdx(), sitemap()],
     markdown: {
         remarkPlugins: [remarkCallout],
         rehypePlugins: [

@@ -4,14 +4,11 @@ description: Guide to installing the Synapse matrix homeserver
 date: 2025-08-23
 ---
 
-import { Replacer } from '@/components/Replacer.tsx'
-
 ## Introduction
 
 The goal of this guide is to set up a docker installation of [**Synapse**](https://github.com/element-hq/synapse) with [**Delegation**](https://element-hq.github.io/synapse/latest/delegate.html#when-do-i-need-delegation) and **SQLite**.
 
 Throughout this guide `domain.tld` will be used as a placeholder domain for the Matrix server.
-<Replacer string="domain.tld" label="Replace it with your domain here:" placeholder="your-domain.tld" id="domain" client:load>
 
 All container-related files will be organized under `/srv/containers`. This directory will contain two subdirectories:
 - `boilerplates/` — stores `compose.yaml` files (service definitions).
@@ -157,5 +154,3 @@ You should also be able to view the following at https://matrix.domain.tld/_matr
 Now is the time to choose a client or app to log in with.
 
 I recommend [Element Web or Desktop](https://matrix.org/ecosystem/clients/element) for desktops and [ Element X](https://matrix.org/ecosystem/clients/element-x) for mobile devices.
-
-</Replacer>

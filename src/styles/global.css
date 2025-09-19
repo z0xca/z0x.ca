@@ -1,10 +1,9 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-sans: "Geist Variable", sans-serif;
-	--font-mono: "Geist Mono Variable", monospace;
+	--font-sans: sans-serif;
+	--font-mono: monospace;
 }
 
 @theme inline {

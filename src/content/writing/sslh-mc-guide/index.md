@@ -23,7 +23,7 @@ cp /etc/init.d/sslh /etc/init.d/sslh.bak
 ### Configure the init script
 
 > [!note]
-> Replace `your_ip_address` with your home IP address. If you don't know your IP, use [icanhazip.com](https://icanhazip.com/) or Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
+> Replace `YOUR.MC.IP.ADDRESS` with your home IP address. If you don't know your IP, use [icanhazip.com](https://icanhazip.com/) or Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
 
 ```
 <!-- /etc/init.d/sslh -->
@@ -34,7 +34,7 @@ cp /etc/init.d/sslh /etc/init.d/sslh.bak
 
 description="Port multiplexer for SSH, HTTPS, OpenVPN etc."
 command="/usr/sbin/sslh-select"
-command_args="--user root --listen 0.0.0.0:25565 --anyprot 24.48.122.54:25565 --pidfile /var/run/sslh/sslh.pid"
+command_args="--user root --listen 0.0.0.0:25565 --anyprot YOUR.MC.IP.ADDRESS:25565 --pidfile /var/run/sslh/sslh.pid"
 supervise_daemon_args=""
 required_files=""
 start_pre() {
