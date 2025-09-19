@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-	--font-sans: sans-serif;
-	--font-mono: monospace;
+	--font-sans: "Geist Variable", sans-serif;
+	--font-mono: "Geist Mono Variable", monospace;
 }
 
 @theme inline {
