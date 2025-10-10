@@ -104,7 +104,7 @@ Login using the credentials that you set, if you followed the example, your user
 ### Add repositories
 
 > [!note]
-> Testing will not be used by default, but you can install a package from it like so:
+> Testing will not be used by default, but you can install a package from it like so
 > 
 >```sh
 >doas apk add [your_package]@testing

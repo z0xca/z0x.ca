@@ -15,7 +15,7 @@ Want to run a Minecraft server from home without revealing your IP address? You 
 
 ### Install sslh and back up the config file
 
-```
+```sh
 apk add sslh
 cp /etc/init.d/sslh /etc/init.d/sslh.bak
 ```
@@ -25,7 +25,7 @@ cp /etc/init.d/sslh /etc/init.d/sslh.bak
 > [!note]
 > Replace `YOUR.MC.IP.ADDRESS` with your home IP address. If you don't know your IP, use [icanhazip.com](https://icanhazip.com/) or Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
 
-```
+```sh
 <!-- /etc/init.d/sslh -->
 #!/sbin/openrc-run
 
@@ -50,12 +50,12 @@ stop() {
 ```
 
 ### Start sslh
-```
+```sh
 rc-service sslh start
 ```
 
 ### Verify that the sslh started successfuly
-```
+```sh
 rc-service sslh status
 netstat -tulnp | grep :25565
 ```
