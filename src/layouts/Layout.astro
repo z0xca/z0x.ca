@@ -13,16 +13,17 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+import { fade } from "astro:transitions";
 ---
 
 <!doctype html>
 <!-- ✨ Built with Astro • https://astro.build/  -->
-<html lang="en">
+<html lang="en" transition:animate={fade({ duration: "0.1s" })}>
   <head>
     <Head title={title} description={description} />
   </head>
   <body>
-    <Header />
+    <Header transition:persist />
     <main>
       <slot />
     </main>
