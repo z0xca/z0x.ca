@@ -3,18 +3,18 @@
 	"version": "1.0.0",
 	"dependencies": {
 		"@astrojs/mdx": "4.3.6",
-		"@astrojs/rss": "^4.0.12",
+		"@astrojs/rss": "^4.0.13",
 		"@astrojs/sitemap": "^3.6.0",
 		"@expressive-code/plugin-line-numbers": "^0.41.3",
 		"@fontsource-variable/geist": "^5.2.8",
 		"@fontsource-variable/geist-mono": "^5.2.7",
 		"@r4ai/remark-callout": "^0.6.2",
 		"@tailwindcss/typography": "^0.5.19",
-		"@tailwindcss/vite": "^4.1.14",
+		"@tailwindcss/vite": "^4.1.16",
 		"astro": "5.14.1",
 		"astro-expressive-code": "^0.41.3",
 		"rehype-external-links": "^3.0.0",
-		"tailwindcss": "^4.1.14"
+		"tailwindcss": "^4.1.16"
 	},
 	"scripts": {
 		"dev": "astro dev",
