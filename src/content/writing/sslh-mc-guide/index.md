@@ -20,33 +20,33 @@ apk add sslh
 cp /etc/init.d/sslh /etc/init.d/sslh.bak
 ```
 
-### Configure the init script
+### Edit the config file
 
 > [!note]
 > Replace `YOUR.MC.IP.ADDRESS` with your home IP address. If you don't know your IP, use [icanhazip.com](https://icanhazip.com/) or Cloudflare's [IP Address Information](https://radar.cloudflare.com/ip) page
 
-```sh
-<!-- /etc/init.d/sslh -->
-#!/sbin/openrc-run
+```diff
+<!-- /etc/conf.d/sslh -->
+# Configuration for /etc/init.d/sslh
 
-: ${mode:="select"}
-: ${wait:=50}
+# The sslh binary to run; one of:
+#
+# fork    Forks a new process for each incoming connection. It is well-tested
+#         and very reliable, but incurs the overhead of many processes.
+# select  Uses only one thread, which monitors all connections at once. It is
+#         more recent and less tested, but has smaller overhead per connection.
+-#mode="fork"
++mode="select"
 
-description="Port multiplexer for SSH, HTTPS, OpenVPN etc."
-command="/usr/sbin/sslh-select"
-command_args="--user root --listen 0.0.0.0:25565 --anyprot YOUR.MC.IP.ADDRESS:25565 --pidfile /var/run/sslh/sslh.pid"
-supervise_daemon_args=""
-required_files=""
-start_pre() {
-    checkpath -d -p /var/run/sslh
-    return 0
-}
-stop() {
-    ebegin "Stopping sslh"
-    start-stop-daemon --stop --pidfile "${pidfile}" \
-        --name "sslh-select" --retry=TERM/5/KILL/5
-    eend $?
-}
+# Path of the configuration file.
+#cfgfile="/etc/sslh.conf"
+
+# Additional options to pass to the sslh daemon. See sslh(1) man page.
+-#command_args=""
++command_args="--user root --listen 0.0.0.0:25565 --anyprot YOUR.MC.IP.ADDRESS:25565"
+
+# Uncomment to run the sslh daemon under process supervisor.
+#supervisor=supervise-daemon
 ```
 
 ### Start sslh
