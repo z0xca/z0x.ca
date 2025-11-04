@@ -1,4 +1,4 @@
-name: build dist
+name: build and deploy
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-dist:
-    runs-on: docker
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -24,7 +24,7 @@ jobs:
           bun run build
 
       - name: Deploy to server
-        uses: https://github.com/appleboy/scp-action@v1
+        uses: appleboy/scp-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
