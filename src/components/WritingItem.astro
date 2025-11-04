@@ -1,0 +1,17 @@
+---
+export interface Props {
+	title: string
+	description: string
+	slug: string
+}
+
+const { title, description, slug } = Astro.props
+---
+
+<a 
+  class="-mx-3 flex flex-col rounded-md px-3 hover:bg-muted sm:py-3"
+  href={`/writing/${slug}`}
+>
+  <h3 class="text-foreground">{title}</h3>
+  <p>{description}</p>
+</a>

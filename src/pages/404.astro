@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout title="404" description="Page not found">
+  <section class="fixed inset-0 h-[100dvh] overscroll-none overflow-hidden flex items-center justify-center p-6 pointer-events-none">
+    <div class="text-center pointer-events-auto">
+      <h1 class="mb-2 text-foreground text-4xl font-medium">404</h1>
+      <p class="mb-6 text-muted-foreground">The page you're looking for doesn't exist.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :global(html), :global(body) { overflow: hidden; overscroll-behavior: none; }
+</style>

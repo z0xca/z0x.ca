@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content"
+import PostFooter from "@/components/PostFooter.astro"
+import PostNavigation from "@/components/PostNavigation.astro"
+import Layout from "@/layouts/Layout.astro"
+
+export async function getStaticPaths() {
+	const posts = await getCollection("writing")
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}))
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+
+const allPosts = (await getCollection("writing")).sort(
+	(a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
+)
+const currentIndex = allPosts.findIndex((p) => p.slug === post.slug)
+const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null
+const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article>
+    <header class="border-b border-border mb-16 sm:mb-32">
+      <h1 class="text-2xl mb-4 leading-none text-foreground">{post.data.title}</h1>
+      <p class="mb-6">{post.data.description}</p>
+    </header>
+    <section class="prose">
+      <Content />
+    </section>
+  </article>
+  <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+  <PostFooter />
+</Layout>

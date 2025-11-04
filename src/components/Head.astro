@@ -1,0 +1,45 @@
+---
+import { ClientRouter } from "astro:transitions"
+import { RSS_TITLE, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/consts";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title, description } = Astro.props;
+
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
+const pageDescription = description || SITE_DESCRIPTION;
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <meta name="color-scheme" content="light dark">
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:site_name" content={SITE_TITLE} />
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link
+  rel="alternate"
+  type="application/rss+xml"
+  title={RSS_TITLE}
+  href={new URL('rss.xml', Astro.site)}
+  />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <ClientRouter />
+</head>
