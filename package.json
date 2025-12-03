@@ -11,7 +11,7 @@
 		"@r4ai/remark-callout": "^0.6.2",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.16",
-		"astro": "5.16.0",
+		"astro": "5.16.1",
 		"astro-expressive-code": "^0.41.3",
 		"rehype-external-links": "^3.0.0",
 		"tailwindcss": "^4.1.16"
