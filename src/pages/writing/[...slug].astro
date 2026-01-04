@@ -1,33 +1,45 @@
 ---
-import { getCollection } from "astro:content"
+import { getCollection, render } from "astro:content"
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import PostFooter from "@/components/PostFooter.astro"
 import PostNavigation from "@/components/PostNavigation.astro"
 import Layout from "@/layouts/Layout.astro"
 
+dayjs.extend(utc);
+
 export async function getStaticPaths() {
-	const posts = await getCollection("writing")
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: { post },
+	const writing = await getCollection("writing")
+	return writing.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
 	}))
 }
 
-const { post } = Astro.props
-const { Content } = await post.render()
+const { entry } = Astro.props
+const { Content, remarkPluginFrontmatter } = await render(entry);
+
+const createdDate = dayjs(entry.data.date).utc().format("YYYY-MM-DD");
+const lastModified = remarkPluginFrontmatter.lastModified
+  ? dayjs(remarkPluginFrontmatter.lastModified).utc().format("YYYY-MM-DD")
+  : null;
 
 const allPosts = (await getCollection("writing")).sort(
 	(a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
 )
-const currentIndex = allPosts.findIndex((p) => p.slug === post.slug)
+const currentIndex = allPosts.findIndex((p) => p.id === entry.id)
 const prevPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null
 const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout title={entry.data.title} description={entry.data.description}>
   <article>
     <header class="border-b border-border mb-16 sm:mb-32">
-      <h1 class="text-2xl mb-4 leading-none text-foreground">{post.data.title}</h1>
-      <p class="mb-6">{post.data.description}</p>
+      <h1 class="text-2xl mb-4 leading-none text-foreground">{entry.data.title}</h1>
+      <p class="mb-6">{entry.data.description}</p>
+      <p class="text-sm text-muted-foreground mb-6">
+        {createdDate}{lastModified && ` · Updated ${lastModified}`}
+      </p>
     </header>
     <section class="prose">
       <Content />

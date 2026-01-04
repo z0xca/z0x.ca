@@ -1,7 +1,7 @@
 ---
 interface Props {
-	prevPost: { slug: string; data: { title: string } } | null
-	nextPost: { slug: string; data: { title: string } } | null
+	prevPost: { id: string; data: { title: string } } | null
+	nextPost: { id: string; data: { title: string } } | null
 }
 
 const { prevPost, nextPost } = Astro.props
@@ -10,7 +10,7 @@ const { prevPost, nextPost } = Astro.props
 <nav class="my-12 flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start">
   <a 
     class={`flex flex-col items-end text-sm no-underline order-2 sm:order-1 sm:items-start ${!prevPost ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''}`}
-    href={prevPost ? `/writing/${prevPost.slug}` : '#'}
+    href={prevPost ? `/writing/${prevPost.id}` : '#'}
     aria-disabled={!prevPost}
   >
     <span>Previous</span>
@@ -21,7 +21,7 @@ const { prevPost, nextPost } = Astro.props
 
   <a 
     class={`flex flex-col items-start text-sm no-underline order-1 sm:order-2 sm:items-end ${!nextPost ? 'pointer-events-none opacity-50 cursor-not-allowed' : ''}`}
-    href={nextPost ? `/writing/${nextPost.slug}` : '#'}
+    href={nextPost ? `/writing/${nextPost.id}` : '#'}
     aria-disabled={!nextPost}
   >
     <span>Next</span>
