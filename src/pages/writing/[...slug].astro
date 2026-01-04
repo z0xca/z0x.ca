@@ -23,6 +23,7 @@ const createdDate = dayjs(entry.data.date).utc().format("YYYY-MM-DD");
 const lastModified = remarkPluginFrontmatter.lastModified
   ? dayjs(remarkPluginFrontmatter.lastModified).utc().format("YYYY-MM-DD")
   : null;
+const lastModifiedCommit = remarkPluginFrontmatter.lastModifiedCommit;
 
 const allPosts = (await getCollection("writing")).sort(
 	(a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime()
@@ -38,7 +39,9 @@ const nextPost = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1]
       <h1 class="text-2xl mb-4 leading-none text-foreground">{entry.data.title}</h1>
       <p class="mb-6">{entry.data.description}</p>
       <p class="text-sm text-muted-foreground mb-6">
-        {createdDate}{lastModified && ` · Updated ${lastModified}`}
+        {createdDate}{lastModified && lastModifiedCommit && (
+          <> · Updated <a href={`https://github.com/z0xca/z0x.ca/commit/${lastModifiedCommit}`} target="_blank" rel="noopener noreferrer" class="underline hover:text-foreground">{lastModified}</a></>
+        )}
       </p>
     </header>
     <section class="prose">
