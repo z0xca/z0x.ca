@@ -163,7 +163,7 @@ doas apk del shadow
 
 #### WG-Easy
 
-If you're planning to use [wg-easy](https://github.com/wg-easy/wg-easy), save yourself hours of troubleshooting by running the following commands
+If you're planning to use [wg-easy](https://github.com/wg-easy/wg-easy), save yourself hours of troubleshooting by [editing some hooks](https://wg-easy.github.io/wg-easy/edge/examples/tutorials/podman-nft/#edit-hooks) and running the following commands
 
 ```sh
 doas apk add iptables ip6tables
