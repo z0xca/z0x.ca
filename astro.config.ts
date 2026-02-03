@@ -9,7 +9,9 @@ import { remarkModifiedTime } from "./src/lib/remark-modified-time";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypeSlug from "rehype-slug";
 
 // https://astro.build/config
 export default defineConfig({
@@ -73,6 +75,51 @@ export default defineConfig({
         {
           target: "_blank",
           rel: ["nofollow", "noreferrer", "noopener"],
+        },
+      ],
+      rehypeSlug,
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "append",
+          content: {
+            type: "element",
+            tagName: "svg",
+            properties: {
+              className: ["anchor-icon"],
+              ariaHidden: "true",
+              xmlns: "http://www.w3.org/2000/svg",
+              width: 16,
+              height: 16,
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+            },
+            children: [
+              {
+                type: "element",
+                tagName: "path",
+                properties: {
+                  d: "M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71",
+                },
+                children: [],
+              },
+              {
+                type: "element",
+                tagName: "path",
+                properties: {
+                  d: "M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71",
+                },
+                children: [],
+              },
+            ],
+          },
+          properties: {
+            className: ["anchor-link"],
+          },
         },
       ],
     ],
