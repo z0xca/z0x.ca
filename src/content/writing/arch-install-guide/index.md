@@ -157,7 +157,7 @@ mount /dev/mapper/root /mnt
 2.  Mount the boot file system
 
 ```sh
-mount -m /dev/nvme0n1p1 /mnt/boot
+mount -m /dev/nvme0n1p1 /mnt/boot -o dmask=0077,fmask=0077
 ```
 
 3. Verify mounting
@@ -182,7 +182,7 @@ lsblk
 Install the base system, kernel, init system and other essential packages.
 
 ```sh
-pacstrap /mnt base base-devel linux linux-firmware efibootmgr neovim
+pacstrap /mnt base base-devel linux linux-firmware efibootmgr doas neovim
 ```
 
 > [!note]
@@ -384,6 +384,13 @@ linux   /vmlinuz-linux
 initrd  /amd-ucode.img
 initrd  /initramfs-linux.img
 options rd.luks.name=xxxx=root root=/dev/mapper/root rw loglevel=3 quiet
+```
+
+```diff
+<!-- /boot/loader/loader.conf -->
+-#timeout 3
++timeout 3
+#console-mode keep
 ```
 
 ## Reboot
