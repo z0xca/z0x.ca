@@ -11,7 +11,7 @@
 				@apply flex flex-row items-start gap-2 p-0 text-blue-500;
 			}
 
-			&:not:only-child {
+			&:not(:only-child) {
 				@apply mb-2;
 			}
 
