@@ -1,15 +1,13 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
+  - package-ecosystem: "bun"
     directory: "/"
     schedule:
       interval: "daily"
+    cooldown:
+      default-days: 3
     groups:
       all-dependencies:
         update-types:
-          - 'minor'
-          - 'patch'
-    ignore:
-      - dependency-name: "astro"
-        update-types: ["version-update:semver-major"]
-
+          - "minor"
+          - "patch"
