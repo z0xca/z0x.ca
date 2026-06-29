@@ -3,6 +3,7 @@
 import fs from "node:fs";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import { unified } from "@astrojs/markdown-remark";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import remarkCallout from "@r4ai/remark-callout";
 import { remarkModifiedTime } from "./src/lib/remark-modified-time";
@@ -21,11 +22,6 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
-  },
-  experimental: {
-    queuedRendering: {
-      enabled: true,
-    },
   },
   integrations: [
     expressiveCode({
@@ -73,28 +69,30 @@ export default defineConfig({
     sitemap(),
   ],
   markdown: {
-    remarkPlugins: [remarkCallout, remarkModifiedTime],
-    rehypePlugins: [
-      rehypeHeadingIds,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "append",
-          content: {
-            type: "element",
-            tagName: "span",
-            properties: { className: ["anchor-link"] },
-            children: [{ type: "text", value: "#" }],
+    processor: unified({
+      remarkPlugins: [remarkCallout, remarkModifiedTime],
+      rehypePlugins: [
+        rehypeHeadingIds,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "append",
+            content: {
+              type: "element",
+              tagName: "span",
+              properties: { className: ["anchor-link"] },
+              children: [{ type: "text", value: "#" }],
+            },
           },
-        },
+        ],
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: ["nofollow", "noreferrer", "noopener"],
+          },
+        ],
       ],
-      [
-        rehypeExternalLinks,
-        {
-          target: "_blank",
-          rel: ["nofollow", "noreferrer", "noopener"],
-        },
-      ],
-    ],
+    }),
   },
 });
