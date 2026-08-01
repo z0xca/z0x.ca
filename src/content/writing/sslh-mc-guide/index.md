@@ -47,11 +47,13 @@ cp /etc/init.d/sslh /etc/init.d/sslh.bak
 ```
 
 ### Start sslh
+
 ```sh
 rc-service sslh start
 ```
 
 ### Verify that the sslh started successfuly
+
 ```sh
 rc-service sslh status
 netstat -tulnp | grep :25565

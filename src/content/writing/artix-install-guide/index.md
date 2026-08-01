@@ -29,7 +29,6 @@ Use [Rufus](https://rufus.ie/en)
 > [!warning]
 > This command will wipe the `/dev/sdb1` partition
 
-
 ```sh
 doas dd bs=4M if=~/Downloads/artix-base-openrc-*-x86_64.iso of=/dev/sdb1 conv=fsync oflag=direct status=progress
 ```
@@ -41,14 +40,15 @@ doas dd bs=4M if=~/Downloads/artix-base-openrc-*-x86_64.iso of=/dev/sdb1 conv=fs
 
 1. Power off your PC.
 2. Insert the flash drive into the computer on which you are installing Artix Linux.
-3. Power on your PC and press your *boot menu* key. 
+3. Power on your PC and press your _boot menu_ key.
 4. Boot the installation medium.
 
-## Enter the live environment 
+## Enter the live environment
 
 Login with the default credentials.
-* Username: `root`
-* Password: `artix`
+
+- Username: `root`
+- Password: `artix`
 
 ## Connect to the internet
 
@@ -90,6 +90,7 @@ ping artixlinux.org
 ## Update the system clock
 
 Activate the NTP daemon to synchronize the computer's real-time clock
+
 ```sh
 rc-service ntpd start
 ```
@@ -99,17 +100,20 @@ rc-service ntpd start
 Throughout this guide `nvme0n1` will be used as the target install drive.
 
 1. Install and run `gdisk`
+
 ```sh
 pacman -Sy gdisk
 gdisk /dev/nvme0n1
 ```
 
 2. Delete any existing partitions. Repeat until none are left.
+
 ```text
 Command (m for help): d
 ```
 
 3. Create a boot partition
+
 ```text
 Command (m for help): n
 Partition number (1-128, default 1):
@@ -119,6 +123,7 @@ Hex code or GUID (...): ef00
 ```
 
 4. Create a root partition
+
 ```text
 Command (m for help): n
 Partition number (2-128, default 1):
@@ -128,12 +133,14 @@ Hex code or GUID (...): 8300
 ```
 
 5. Write the changes
+
 ```text
 Command (m for help): w
 Do you want to proceed? (Y/N): y
 ```
 
 6. Verify partitioning
+
 ```sh
 lsblk
 ```
@@ -153,7 +160,7 @@ lsblk
 1. Encrypt your root partition
 
 > [!tip]
->Make sure to enter a secure passphrase and to write it down
+> Make sure to enter a secure passphrase and to write it down
 
 ```sh
 cryptsetup luksFormat /dev/nvme0n1p2
@@ -161,6 +168,7 @@ Are you sure (Type `yes` in capital letters): YES
 ```
 
 2. Open the encrypted partition
+
 ```sh
 cryptsetup open /dev/nvme0n1p2 root
 ```
@@ -168,11 +176,13 @@ cryptsetup open /dev/nvme0n1p2 root
 ## Create filesystems
 
 1. Create the boot file system
+
 ```sh
 mkfs.fat -F32 /dev/nvme0n1p1
 ```
 
 1. Create the root file system
+
 ```sh
 mkfs.ext4 /dev/mapper/root
 ```
@@ -180,16 +190,19 @@ mkfs.ext4 /dev/mapper/root
 ## Mount file systems
 
 1. Mount the root file system
+
 ```sh
 mount /dev/mapper/root /mnt
 ```
 
 2.  Mount the boot file system
+
 ```sh
 mount -m /dev/nvme0n1p1 /mnt/boot
 ```
 
 3. Verify mounting
+
 ```sh
 lsblk
 ```
@@ -199,9 +212,9 @@ lsblk
 >
 > ```shell title="lsblk"
 > NAME        MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
-> nvme0n1     259:0    0 465,8G  0 disk  
+> nvme0n1     259:0    0 465,8G  0 disk
 > ├─nvme0n1p1 259:1    0   512M  0 part  /mnt/boot
-> └─nvme0n1p2 259:2    0 465,3G  0 part  
+> └─nvme0n1p2 259:2    0 465,3G  0 part
 >   └─root    254:0    0 465,2G  0 crypt /mnt
 > ```
 
@@ -261,7 +274,7 @@ rc-update add iwd
 ### MAC randomization
 
 > [!info]
->MAC randomization can be used for increased privacy by not disclosing your real MAC address to the WiFi network. 
+> MAC randomization can be used for increased privacy by not disclosing your real MAC address to the WiFi network.
 
 ```text
 <!-- /etc/NetworkManager/conf.d/00-macrandomize.conf -->
@@ -278,21 +291,22 @@ wifi.cloned-mac-address=random
 ### Set the locale
 
 > [!tip]
->Feel free to change `en_DK.UTF-8` to your preferred locale such as `en_US.UTF-8` or `en_GB.UTF-8`
+> Feel free to change `en_DK.UTF-8` to your preferred locale such as `en_US.UTF-8` or `en_GB.UTF-8`
 
 1. Uncomment `en_DK.UTF-8`
 
 ```ini showLineNumbers=true startLineNumber=150 {4}
 <!-- /etc/locale.gen -->
-#en_CA.UTF-8 UTF-8  
-#en_CA ISO-8859-1  
-en_DK.UTF-8 UTF-8  
-#en_DK ISO-8859-1  
-#en_GB.UTF-8 UTF-8  
-#en_GB ISO-8859-1  
+#en_CA.UTF-8 UTF-8
+#en_CA ISO-8859-1
+en_DK.UTF-8 UTF-8
+#en_DK ISO-8859-1
+#en_GB.UTF-8 UTF-8
+#en_GB ISO-8859-1
 ```
 
 2. Generate locales
+
 ```sh
 echo 'LANG=en_DK.UTF-8' > /etc/locale.conf
 locale-gen
@@ -301,7 +315,7 @@ locale-gen
 ## Set the timezone
 
 > [!example]
->`ln -sf /usr/share/zoneinfo/Asia/Dubai /etc/localtime`
+> `ln -sf /usr/share/zoneinfo/Asia/Dubai /etc/localtime`
 
 ```sh
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
@@ -352,9 +366,11 @@ Generate initramfs images
 ```sh
 mkinitcpio -P
 ```
+
 ## Add a user
 
 1. Set the root password.
+
 ```sh
 passwd
 ```
@@ -369,6 +385,7 @@ passwd artixuser
 ## Configure doas
 
 1. Create the config file and set the appropriate permissions
+
 ```sh
 touch /etc/doas.conf
 chown -c root:root /etc/doas.conf
@@ -376,6 +393,7 @@ chmod -c 0400 /etc/doas.conf
 ```
 
 2. Add the following
+
 ```diff
 <!-- /etc/doas.conf -->
 +permit artixuser as root
@@ -383,18 +401,21 @@ chmod -c 0400 /etc/doas.conf
 ```
 
 ## Boot loader
+
 ### Check for UEFI support
 
 > [!tip]
->If you see a bunch of files listed when executing the following command, use EFISTUB.
->If you do not see a bunch of files listed, your system does not support UEFI and you should use GRUB.
->```sh
->ls /sys/firmware/efi/efivars
->```
+> If you see a bunch of files listed when executing the following command, use EFISTUB.
+> If you do not see a bunch of files listed, your system does not support UEFI and you should use GRUB.
+>
+> ```sh
+> ls /sys/firmware/efi/efivars
+> ```
 
 ### EFISTUB
 
 1. Get the UUID of your root partition
+
 ```sh
 blkid -s UUID -o value /dev/nvme0n1p2
 ```
@@ -413,12 +434,14 @@ efibootmgr -c -d /dev/nvme0n1 -p 1 -l /vmlinuz-linux -L "Artix" -u "cryptdevice=
 ### GRUB
 
 1. Install grub on your boot partition
+
 ```sh
 pacman -S grub
 grub-install /dev/nvme0n1
 ```
 
 2. Get the UUID of your root partition
+
 ```sh
 blkid -s UUID -o value /dev/nvme0n1p2
 ```
@@ -427,7 +450,7 @@ blkid -s UUID -o value /dev/nvme0n1p2
 
 > [!note]
 > It should look something like this with xxxx being the UUID that you just obtained
-> 
+>
 > ```ini
 > GRUB_CMDLINE_LINUX="cryptdevice=UUID=550e8400-e29b-41d4-a716-446655440000:root root=/dev/mapper/root"
 > GRUB_ENABLE_CRYPTODISK=y
@@ -440,6 +463,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=xxxx:root root=/dev/mapper/root"
 ```
 
 4. Generate the config file
+
 ```sh
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -463,9 +487,11 @@ You will now be greeted with a similar screen as when you first booted from the 
 Login using the credentials that you set, if you followed the example your username would be `artixuser`.
 
 ### Add arch repositories and sort for fastest mirrors
+
 #### Add arch extra repository
 
 1. Install packages and fetch mirrorlist
+
 ```sh
 doas pacman -Syu artix-archlinux-support curl
 doas pacman-key --populate archlinux
@@ -503,8 +529,10 @@ doas sh -c "curl https://gitea.artixlinux.org/packages/artix-mirrorlist/raw/bran
 doas sh -c "rankmirrors -v -n 5 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist"
 ```
 
-###  AUR
-####  Add Chaotic-AUR
+### AUR
+
+#### Add Chaotic-AUR
+
 ```sh
 doas pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 doas pacman-key --lsign-key 3056513887B78AEB
@@ -518,7 +546,7 @@ doas pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg
 +Include = /etc/pacman.d/chaotic-mirrorlist
 ```
 
-####  Install paru
+#### Install paru
 
 ```sh
 doas pacman -Syu

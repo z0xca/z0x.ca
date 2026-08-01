@@ -11,6 +11,7 @@ The goal of this guide is to set up a docker installation of [**Synapse**](https
 Throughout this guide `domain.tld` will be used as a placeholder domain for the Matrix server.
 
 All container-related files will be organized under `/srv/containers`. This directory will contain two subdirectories:
+
 - `boilerplates/` — stores `compose.yaml` files (service definitions).
 - `compose/` — stores persistent data and configurations of said services.
 
@@ -19,8 +20,8 @@ All container-related files will be organized under `/srv/containers`. This dire
 You will need to configure your domain name registrar (I recommend using [Porkbun](https://porkbun.com)) to direct requests from `domain.tld` to your server's IP address.
 Specifically, you'll need to create the following **A records**:
 
-*   `domain.tld` pointing to your server's external IP address.
-*   `matrix.domain.tld` also pointing to your server's external IP address.
+- `domain.tld` pointing to your server's external IP address.
+- `matrix.domain.tld` also pointing to your server's external IP address.
 
 Don't forget to configure port forwarding for ports 80 and 443 to route to your server's internal IP.
 
@@ -111,7 +112,7 @@ domain.tld {
   header /.well-known/matrix/* Access-Control-Allow-Origin *
   respond /.well-known/matrix/server `{"m.server": "matrix.domain.tld:443"}`
   respond /.well-known/matrix/client `{"m.homeserver":{"base_url":"https://matrix.domain.tld"}}`
-  
+
   encode zstd gzip
 }
 
@@ -126,7 +127,7 @@ matrix.domain.tld {
     not path /_synapse/client/*
   }
   respond @blocked 403
-  
+
   encode zstd gzip
 }
 ```
@@ -146,7 +147,7 @@ If you hit any issues, it's likely to do with the reverse proxy or delegation se
 You should also be able to view the following at https://matrix.domain.tld/_matrix/static
 
 <div class="max-w-md mx-auto flex justify-center prose-img:rounded-md dark:invert">
-![Synapse is running](assets/SynapseIsRunning.png)
+  ![Synapse is running](assets/SynapseIsRunning.png)
 </div>
 
 ## Pick a Client and Sign In

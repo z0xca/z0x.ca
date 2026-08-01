@@ -17,7 +17,9 @@ uv pip install -r requirements.txt
 uv pip uninstall torch torchvision torchaudio
 uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 ```
+
 ## Running
+
 ```sh
 uv run main.py
 ```

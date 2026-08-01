@@ -24,7 +24,6 @@ The goal of this guide is to set up a minimal installation of **Alpine Linux** w
 > [!warning]
 > This command will wipe the `/dev/sdb1` partition
 
-
 ```sh
 doas dd bs=4M if=~/Downloads/alpine*x86_64.iso of=/dev/sdb1 conv=fsync oflag=direct status=progress
 ```
@@ -40,10 +39,10 @@ Use [Rufus](https://rufus.ie/en)
 
 1. Power off your PC.
 2. Insert the flash drive into the computer on which you are installing Alpine Linux.
-3. Power on your PC and press your *boot menu* key. 
+3. Power on your PC and press your _boot menu_ key.
 4. Boot the installation medium.
 
-## Enter the live environment 
+## Enter the live environment
 
 Log in as the user `root`. Initially, the **root** user has no password.
 
@@ -51,9 +50,9 @@ Log in as the user `root`. Initially, the **root** user has no password.
 > `nvme0n1` will be used as the target install drive throughout this guide, adapt it to your drive name.
 
 > [!tip]
->Change `alpine` to your desired hostname and `system` to your desired username.
+> Change `alpine` to your desired hostname and `system` to your desired username.
 >
->Change `Asia/Dubai` to your timezone.
+> Change `Asia/Dubai` to your timezone.
 
 ```sh
 setup-alpine
@@ -105,11 +104,10 @@ Login using the credentials that you set, if you followed the example, your user
 
 > [!note]
 > Testing will not be used by default, but you can install a package from it like so
-> 
->```sh
->doas apk add [your_package]@testing
->```
-
+>
+> ```sh
+> doas apk add [your_package]@testing
+> ```
 
 ```sh
 doas apk update
@@ -142,6 +140,7 @@ doas resize2fs /dev/nvme0n1/lv_root
 
 ```md
 <!-- ~/.zshenv -->
+
 export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -155,7 +154,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 ```sh
 doas apk add docker docker-cli-compose zsh shadow neovim
-chsh -s zsh $USER 
+chsh -s zsh $USER
 doas addgroup $USER docker
 doas rc-update add docker && rc-service docker start
 doas apk del shadow
