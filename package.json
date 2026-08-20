@@ -16,7 +16,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "7.2.2",
     "astro-expressive-code": "^0.44.1",
-    "dayjs": "^1.11.22",
+    "dayjs": "^1.11.23",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-external-links": "^3.0.0",
     "tailwindcss": "^4.3.3"
