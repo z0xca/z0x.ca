@@ -11,7 +11,7 @@
 
   languages.javascript = {
     enable = true;
-    bun = {
+    pnpm = {
       enable = true;
       install.enable = true;
     };
@@ -37,6 +37,7 @@
 
   treefmt = {
     enable = true;
+    config.settings.global.excludes = [ "pnpm-lock.yaml" ];
     config.programs = {
       nixfmt.enable = true;
       prettier.enable = true;
