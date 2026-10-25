@@ -1,7 +1,7 @@
 ---
 title: Protect Your Home Minecraft Server’s IP with a VPS
 description: Guide to installing and configuring sslh on Alpine Linux
-date: 2025-08-30
+pubDate: 2025-08-30
 ---
 
 ## Introduction

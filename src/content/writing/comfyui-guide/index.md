@@ -1,7 +1,7 @@
 ---
 title: ComfyUI on Pascal cards
 description: Guide to installing ComfyUI to run on Pascal Nvidia GPUs using uv
-date: 2026-01-04
+pubDate: 2026-01-04
 ---
 
 ## Installation

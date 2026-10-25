@@ -1,7 +1,7 @@
 ---
 title: Arch Linux install guide
 description: Guide to installing Arch Linux with full disk encryption for UEFI systems
-date: 2026-02-01
+pubDate: 2026-02-01
 ---
 
 ## Introduction

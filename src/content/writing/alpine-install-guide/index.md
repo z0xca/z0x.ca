@@ -1,7 +1,7 @@
 ---
 title: Alpine Linux install guide
 description: Guide to installing Alpine Linux with full disk encryption
-date: 2025-05-04
+pubDate: 2025-05-04
 ---
 
 ## Introduction

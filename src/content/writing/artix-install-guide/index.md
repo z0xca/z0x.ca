@@ -1,7 +1,7 @@
 ---
 title: Artix Linux install guide
 description: Guide to installing Artix Linux with OpenRC and full disk encryption for UEFI and BIOS systems
-date: 2025-01-07
+pubDate: 2025-01-07
 ---
 
 ## Introduction

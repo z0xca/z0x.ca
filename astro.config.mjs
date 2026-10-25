@@ -6,7 +6,6 @@ import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import remarkCallout from "@r4ai/remark-callout";
-import { remarkModifiedTime } from "./src/lib/remark-modified-time";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
@@ -70,7 +69,7 @@ export default defineConfig({
   ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkCallout, remarkModifiedTime],
+      remarkPlugins: [remarkCallout],
       rehypePlugins: [
         rehypeHeadingIds,
         [

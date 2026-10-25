@@ -4,7 +4,9 @@ import type { APIContext } from "astro";
 import { RSS_DESCRIPTION, RSS_TITLE } from "@/lib/consts";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("writing");
+  const posts = (await getCollection("writing")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
 
   return rss({
     title: RSS_TITLE,
@@ -13,7 +15,7 @@ export async function GET(context: APIContext) {
     items: posts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
-      pubDate: post.data.date,
+      pubDate: post.data.pubDate,
       link: `/writing/${post.id}/`,
     })),
   });
