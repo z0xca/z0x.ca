@@ -29,13 +29,13 @@ jobs:
           pnpm run build
 
       - name: Deploy to server
-        uses: appleboy/scp-action@v1
+        uses: burnett01/rsync-deployments@2cbb5ed94b73d111d07a40b071b1c7d3c0272435 # 9.0.2
         with:
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "dist/*"
-          target: ${{ secrets.TARGET }}
-          strip_components: 1
-          overwrite: true
+          switches: -rlptvh --delete
+          path: dist/
+          remote_path: ${{ secrets.TARGET }}/
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USERNAME }}
+          remote_port: ${{ secrets.PORT }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          strict_hostkeys_checking: true
